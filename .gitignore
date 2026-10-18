@@ -1,9 +1,16 @@
+# Node.js
+frontend/node_modules/
+frontend/package-lock.json
+
+# Python
 .env
 *.log
 __pycache__/
 *.pyc
 venv/
 .venv/
+
+# IDE
 .idea/
 .vscode/
 secrets.json
