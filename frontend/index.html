@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -19,9 +19,9 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --secondary: #8b5cf6;
+            --primary: #ec4899;
+            --primary-dark: #db2777;
+            --secondary: #f472b6;
             --success: #10b981;
             --warning: #f59e0b;
             --danger: #ef4444;
@@ -35,42 +35,26 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
             min-height: 100vh;
             color: var(--dark);
             overflow-x: hidden;
         }
 
-        /* Анимация загрузки */
+        /* Анимации */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
         }
 
         .container {
@@ -123,16 +107,10 @@
             font-weight: 500;
         }
 
-        .nav-link:hover {
+        .nav-link:hover, .nav-link.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
             transform: translateX(5px);
-            box-shadow: var(--shadow);
-        }
-
-        .nav-link.active {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
             box-shadow: var(--shadow);
         }
 
@@ -148,7 +126,6 @@
             overflow-y: auto;
         }
 
-        /* Верхняя панель */
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -203,15 +180,8 @@
             flex-direction: column;
         }
 
-        .user-name {
-            font-weight: 600;
-            color: var(--dark);
-        }
-
-        .user-role {
-            font-size: 0.85rem;
-            color: var(--gray);
-        }
+        .user-name { font-weight: 600; color: var(--dark); }
+        .user-role { font-size: 0.85rem; color: var(--gray); }
 
         /* Карточки статистики */
         .stats-grid {
@@ -230,6 +200,7 @@
             transition: all 0.3s ease;
             animation: fadeInUp 0.8s ease-out;
             animation-fill-mode: both;
+            cursor: pointer;
         }
 
         .stat-card:nth-child(1) { animation-delay: 0.1s; }
@@ -260,10 +231,10 @@
             color: white;
         }
 
-        .stat-icon.blue { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .stat-icon.blue { background: linear-gradient(135deg, #ec4899, #f472b6); }
         .stat-icon.green { background: linear-gradient(135deg, #10b981, #059669); }
         .stat-icon.orange { background: linear-gradient(135deg, #f59e0b, #d97706); }
-        .stat-icon.red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .stat-icon.red { background: linear-gradient(135deg, #f43f5e, #e11d48); }
 
         .stat-trend {
             display: flex;
@@ -274,15 +245,8 @@
             font-weight: 600;
         }
 
-        .stat-trend.up {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
-
-        .stat-trend.down {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
+        .stat-trend.up { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .stat-trend.down { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
 
         .stat-value {
             font-size: 2.5rem;
@@ -291,12 +255,9 @@
             margin: 0.5rem 0;
         }
 
-        .stat-label {
-            color: var(--gray);
-            font-size: 0.95rem;
-        }
+        .stat-label { color: var(--gray); font-size: 0.95rem; }
 
-        /* Графики */
+        /* Графики и Таблицы */
         .charts-section {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -304,7 +265,7 @@
             margin-bottom: 2rem;
         }
 
-        .chart-card {
+        .chart-card, .table-card {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 2rem;
@@ -313,46 +274,20 @@
             animation: fadeInUp 1s ease-out;
         }
 
-        .chart-header {
+        .chart-header, .table-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             margin-bottom: 1.5rem;
         }
 
-        .chart-title {
+        .chart-title, .table-title {
             font-size: 1.3rem;
             font-weight: 600;
             color: var(--dark);
         }
 
-        .chart-container {
-            position: relative;
-            height: 300px;
-        }
-
-        /* Таблица */
-        .table-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            animation: fadeInUp 1.2s ease-out;
-        }
-
-        .table-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .table-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: var(--dark);
-        }
+        .chart-container { position: relative; height: 300px; }
 
         .btn {
             padding: 0.75rem 1.5rem;
@@ -369,43 +304,25 @@
         .btn-primary {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.4);
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            box-shadow: 0 6px 20px rgba(236, 72, 153, 0.6);
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
+        .btn-cancel { background: var(--gray); color: white; }
+        .btn-cancel:hover { background: #475569; }
 
-        thead {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-        }
-
-        th {
-            padding: 1rem;
-            text-align: left;
-            font-weight: 600;
-        }
-
-        td {
-            padding: 1rem;
-            border-bottom: 1px solid var(--border);
-        }
-
-        tbody tr {
-            transition: all 0.3s ease;
-        }
-
-        tbody tr:hover {
-            background: rgba(99, 102, 241, 0.05);
-            transform: scale(1.01);
-        }
+        table { width: 100%; border-collapse: collapse; }
+        thead { background: linear-gradient(135deg, var(--primary), var(--secondary)); color: white; }
+        th { padding: 1rem; text-align: left; font-weight: 600; }
+        td { padding: 1rem; border-bottom: 1px solid var(--border); }
+        
+        tbody tr { transition: all 0.3s ease; cursor: pointer; }
+        tbody tr:hover { background: rgba(236, 72, 153, 0.05); transform: scale(1.01); }
+        tbody tr.selected { background: rgba(236, 72, 153, 0.1); border-left: 4px solid var(--primary); }
 
         .status-badge {
             padding: 0.5rem 1rem;
@@ -415,22 +332,11 @@
             display: inline-block;
         }
 
-        .status-active {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--success);
-        }
+        .status-active { background: rgba(16, 185, 129, 0.1); color: var(--success); }
+        .status-pending { background: rgba(245, 158, 11, 0.1); color: var(--warning); }
+        .status-inactive { background: rgba(239, 68, 68, 0.1); color: var(--danger); }
 
-        .status-pending {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--warning);
-        }
-
-        .status-inactive {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--danger);
-        }
-
-        /* Уведомления */
+        /* Уведомления и Модальные окна */
         .notification {
             position: fixed;
             top: 2rem;
@@ -439,22 +345,11 @@
             padding: 1.5rem 2rem;
             border-radius: 15px;
             box-shadow: var(--shadow-lg);
-            display: flex;
+            display: none;
             align-items: center;
             gap: 1rem;
             animation: slideInRight 0.5s ease-out;
             z-index: 1000;
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(100px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
         }
 
         .notification-icon {
@@ -468,237 +363,309 @@
             color: white;
         }
 
-        /* Адаптивность */
-        @media (max-width: 1024px) {
-            .charts-section {
-                grid-template-columns: 1fr;
-            }
+        .modal {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .sidebar {
-                display: none;
-            }
+        .modal.active { opacity: 1; visibility: visible; }
 
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            width: 90%;
+            max-width: 600px;
+            max-height: 90vh;
+            overflow-y: auto;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        .modal.active .modal-content { transform: scale(1); }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-title { font-size: 1.5rem; font-weight: 600; color: var(--dark); }
+        .modal-close { background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--gray); }
+        .modal-close:hover { color: var(--danger); }
+
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; font-weight: 500; color: var(--dark); }
+        .form-input, .form-select, .form-textarea {
+            width: 100%; padding: 0.75rem 1rem; border: 2px solid var(--border);
+            border-radius: 10px; font-size: 1rem; transition: border-color 0.3s ease;
+        }
+        .form-input:focus, .form-select:focus, .form-textarea:focus { outline: none; border-color: var(--primary); }
+        .form-textarea { min-height: 120px; resize: vertical; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .form-actions { display: flex; gap: 1rem; justify-content: flex-end; margin-top: 2rem; }
+
+        /* Адаптивность */
+        @media (max-width: 1024px) { .charts-section { grid-template-columns: 1fr; } }
+        @media (max-width: 768px) {
+            .sidebar { display: none; }
+            .stats-grid, .form-row { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Боковая панель -->
         <aside class="sidebar">
             <div class="logo">
                 <h1><i class="fas fa-cube"></i> NASTpro1</h1>
             </div>
             <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#" class="nav-link active">
-                        <i class="fas fa-home"></i>
-                        <span>Дашборд</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                         <i class="fas fa-users"></i>
-                         <span>Заказчики</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                         <i class="fas fa-handshake"></i>
-                         <span>Проекты</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-tasks"></i>
-                        <span>Задачи</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Аналитика</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-cog"></i>
-                        <span>Настройки</span>
-                    </a>
-                </li>
+                <li class="nav-item"><a href="#" class="nav-link active" data-section="дашборд"><i class="fas fa-home"></i><span>Главная</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="заказчики"><i class="fas fa-user-tie"></i><span>Заказчики</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="проекты"><i class="fas fa-project-diagram"></i><span>Проекты</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="задачи"><i class="fas fa-tasks"></i><span>Задачи</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="аналитика"><i class="fas fa-chart-line"></i><span>Аналитика</span></a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-section="настройки"><i class="fas fa-cog"></i><span>Настройки</span></a></li>
             </ul>
         </aside>
 
-        <!-- Основная область -->
         <main class="main-content">
-            <!-- Верхняя панель -->
             <div class="top-bar">
                 <div class="page-title">
                     <h2>Добро пожаловать!</h2>
-                    <p>Вот что происходит на этот момент</p>
+                    <p>Обзор вашего бизнеса на сегодня</p>
                 </div>
                 <div class="user-profile">
-                    <div class="user-avatar">АА</div>
+                    <div class="user-avatar">АИ</div>
                     <div class="user-info">
-                        <span class="user-name">Админ Анастасия</span>
-                        <span class="user-role">Системный Аналитик</span>
+                        <span class="user-name">Администратор Иванов</span>
+                        <span class="user-role">Руководитель</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Карточки статистики -->
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon blue">
-                            <i class="fas fa-users"></i>
+            <!-- Секция: Дашборд -->
+            <div id="дашборд-section" class="section-content">
+                <div class="stats-grid">
+                    <div class="stat-card" onclick="navigateTo('заказчики')">
+                        <div class="stat-header">
+                            <div class="stat-icon blue"><i class="fas fa-users"></i></div>
+                            <div class="stat-trend up"><i class="fas fa-arrow-up"></i><span>+12,5%</span></div>
                         </div>
-                        <div class="stat-trend up">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>+12.5%</span>
-                        </div>
+                        <div class="stat-value" data-target="1248">0</div>
+                        <div class="stat-label">Всего заказчиков</div>
                     </div>
-                     <div class="stat-value" data-target="1248">0</div>
-                     <div class="stat-label">Всего заказчиков</div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon green"><i class="fas fa-ruble-sign"></i></div>
+                            <div class="stat-trend up"><i class="fas fa-arrow-up"></i><span>+8,2%</span></div>
+                        </div>
+                        <div class="stat-value" data-target="584300">0 ₽</div>
+                        <div class="stat-label">Выручка за месяц</div>
+                    </div>
+                    <div class="stat-card" onclick="navigateTo('проекты')">
+                        <div class="stat-header">
+                            <div class="stat-icon orange"><i class="fas fa-project-diagram"></i></div>
+                            <div class="stat-trend up"><i class="fas fa-arrow-up"></i><span>+23,1%</span></div>
+                        </div>
+                        <div class="stat-value" data-target="87">0</div>
+                        <div class="stat-label">Активных проектов</div>
+                    </div>
+                    <div class="stat-card" onclick="navigateTo('задачи')">
+                        <div class="stat-header">
+                            <div class="stat-icon red"><i class="fas fa-tasks"></i></div>
+                            <div class="stat-trend down"><i class="fas fa-arrow-down"></i><span>-3,4%</span></div>
+                        </div>
+                        <div class="stat-value" data-target="34">0</div>
+                        <div class="stat-label">Задач в работе</div>
+                    </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon green">
-                            <i class="fas fa-dollar-sign"></i>
-                        </div>
-                        <div class="stat-trend up">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>+8.2%</span>
-                        </div>
+                <div class="charts-section">
+                    <div class="chart-card">
+                        <div class="chart-header"><h3 class="chart-title">Динамика продаж</h3></div>
+                        <div class="chart-container"><canvas id="salesChart"></canvas></div>
                     </div>
-                    <div class="stat-value" data-target="584300">0 ₽</div>
-                    <div class="stat-label">Выручка за месяц</div>
+                    <div class="chart-card">
+                        <div class="chart-header"><h3 class="chart-title">Статус проектов</h3></div>
+                        <div class="chart-container"><canvas id="dealsChart"></canvas></div>
+                    </div>
                 </div>
 
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon orange">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <div class="stat-trend up">
-                            <i class="fas fa-arrow-up"></i>
-                            <span>+23.1%</span>
-                        </div>
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">Последние заказчики</h3>
+                        <button class="btn btn-primary" onclick="navigateTo('заказчики')"><i class="fas fa-plus"></i> Добавить заказчика</button>
                     </div>
-                     <div class="stat-value" data-target="87">0</div>
-                     <div class="stat-label">Активных проектов</div>
-                </div>
-
-                <div class="stat-card">
-                    <div class="stat-header">
-                        <div class="stat-icon red">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div class="stat-trend down">
-                            <i class="fas fa-arrow-down"></i>
-                            <span>-3.4%</span>
-                        </div>
-                    </div>
-                    <div class="stat-value" data-target="34">0</div>
-                    <div class="stat-label">Задач в работе</div>
+                    <table>
+                        <thead>
+                            <tr><th>Имя</th><th>Электронная почта</th><th>Компания</th><th>Статус</th><th>Сумма проекта</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Алексей Петров</strong></td><td>alex@example.com</td><td>ООО «ТехноСервис»</td><td><span class="status-badge status-active">Активный</span></td><td><strong>125 000 ₽</strong></td></tr>
+                            <tr><td><strong>Мария Сидорова</strong></td><td>m.sidorova@example.com</td><td>ИП Сидорова</td><td><span class="status-badge status-pending">В ожидании</span></td><td><strong>85 000 ₽</strong></td></tr>
+                            <tr><td><strong>Дмитрий Козлов</strong></td><td>d.kozlov@example.com</td><td>АО «Инновации»</td><td><span class="status-badge status-active">Активный</span></td><td><strong>230 000 ₽</strong></td></tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <!-- Графики -->
-            <div class="charts-section">
-                <div class="chart-card">
-                    <div class="chart-header">
-                        <h3 class="chart-title">Динамика продаж</h3>
+            <!-- Секция: Заказчики -->
+            <div id="заказчики-section" class="section-content" style="display: none;">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">База заказчиков</h3>
+                        <button class="btn btn-primary" onclick="showNotification('Форма добавления заказчика', 'info')"><i class="fas fa-plus"></i> Новый заказчик</button>
                     </div>
-                    <div class="chart-container">
-                        <canvas id="salesChart"></canvas>
-                    </div>
-                </div>
-
-                <div class="chart-card">
-                    <div class="chart-header">
-                         <h3 class="chart-title">Статус проектов</h3>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="dealsChart"></canvas>
+                    <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                        <i class="fas fa-users" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                        <h3>Управление заказчиками</h3>
+                        <p>Здесь будет полная CRM-база ваших клиентов и стейкхолдеров.</p>
                     </div>
                 </div>
             </div>
 
-            <!-- Таблица заказчиков -->
-            <div class="table-card">
-                <div class="table-header">
-                     <h3 class="table-title">Последние заказчики</h3>
-                    <button class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                        Добавить заказчика
-                    </button>
+            <!-- Секция: Проекты -->
+            <div id="проекты-section" class="section-content" style="display: none;">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">Управление проектами</h3>
+                        <button class="btn btn-primary" onclick="showNotification('Создание нового проекта', 'info')"><i class="fas fa-plus"></i> Новый проект</button>
+                    </div>
+                    <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                        <i class="fas fa-project-diagram" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                        <h3>Портфель проектов</h3>
+                        <p>Здесь будет канбан-доска или список ваших активных проектов.</p>
+                    </div>
                 </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Имя</th>
-                            <th>Email</th>
-                            <th>Компания</th>
-                            <th>Статус</th>
-                            <th>Сумма сделки</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Алексей Петров</strong></td>
-                            <td>alex.petrov@example.com</td>
-                            <td>ООО "ТехноСервис"</td>
-                            <td><span class="status-badge status-active">Активный</span></td>
-                            <td><strong>125 000 ₽</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Мария Сидорова</strong></td>
-                            <td>m.sidorova@example.com</td>
-                            <td>ИП Сидорова</td>
-                            <td><span class="status-badge status-pending">В ожидании</span></td>
-                            <td><strong>85 000 ₽</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Дмитрий Козлов</strong></td>
-                            <td>d.kozlov@example.com</td>
-                            <td>АО "Инновации"</td>
-                            <td><span class="status-badge status-active">Активный</span></td>
-                            <td><strong>230 000 ₽</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Елена Волкова</strong></td>
-                            <td>e.volkova@example.com</td>
-                            <td>ООО "МаркетПро"</td>
-                            <td><span class="status-badge status-inactive">Неактивный</span></td>
-                            <td><strong>45 000 ₽</strong></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Сергей Новиков</strong></td>
-                            <td>s.novikov@example.com</td>
-                            <td>ООО "СтройМастер"</td>
-                            <td><span class="status-badge status-active">Активный</span></td>
-                            <td><strong>178 000 ₽</strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+            </div>
+
+            <!-- Секция: Задачи -->
+            <div id="задачи-section" class="section-content" style="display: none;">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">Менеджер задач</h3>
+                        <button class="btn btn-primary" onclick="openTaskModal()"><i class="fas fa-plus"></i> Новая задача</button>
+                    </div>
+                    <div id="tasks-container">
+                        <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                            <i class="fas fa-tasks" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                            <h3>Нет активных задач</h3>
+                            <p>Создайте первую задачу для вашей команды!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция: Аналитика -->
+            <div id="аналитика-section" class="section-content" style="display: none;">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">Аналитика и отчеты</h3>
+                        <button class="btn btn-primary" onclick="showNotification('Генерация отчета...', 'info')"><i class="fas fa-chart-pie"></i> Создать отчет</button>
+                    </div>
+                    <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                        <i class="fas fa-chart-bar" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                        <h3>Центр аналитики</h3>
+                        <p>Здесь будут детальные отчеты по эффективности команды и проектам.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Секция: Настройки -->
+            <div id="настройки-section" class="section-content" style="display: none;">
+                <div class="table-card">
+                    <div class="table-header">
+                        <h3 class="table-title">Настройки системы</h3>
+                        <button class="btn btn-primary" onclick="showNotification('Настройки успешно сохранены!', 'success')"><i class="fas fa-save"></i> Сохранить</button>
+                    </div>
+                    <div style="text-align: center; padding: 3rem; color: var(--gray);">
+                        <i class="fas fa-cogs" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                        <h3>Конфигурация NASTpro1</h3>
+                        <p>Здесь будут настройки профиля, уведомлений и интеграций.</p>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
 
     <!-- Уведомление -->
-    <div class="notification" id="notification" style="display: none;">
-        <div class="notification-icon">
-            <i class="fas fa-check"></i>
-        </div>
+    <div class="notification" id="notification">
+        <div class="notification-icon"><i class="fas fa-check"></i></div>
         <div>
-            <strong>Добро пожаловать!</strong>
-            <p>Система успешно загружена</p>
+            <strong id="notif-title">Успешно!</strong>
+            <p id="notif-message">Действие выполнено</p>
+        </div>
+    </div>
+
+    <!-- Модальное окно создания задачи -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Создание новой задачи</h3>
+                <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="taskForm">
+                <div class="form-group">
+                    <label class="form-label">Название задачи *</label>
+                    <input type="text" class="form-input" name="title" required placeholder="Введите название задачи">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Описание задачи *</label>
+                    <textarea class="form-textarea" name="description" required placeholder="Подробное описание задачи"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Исполнитель *</label>
+                        <select class="form-select" name="assignee" required>
+                            <option value="">Выберите сотрудника</option>
+                            <option value="ivanov">Иванов Алексей</option>
+                            <option value="petrov">Петров Михаил</option>
+                            <option value="sidorova">Сидорова Екатерина</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Приоритет *</label>
+                        <select class="form-select" name="priority" required>
+                            <option value="">Выберите приоритет</option>
+                            <option value="high">Высокий</option>
+                            <option value="medium">Средний</option>
+                            <option value="low">Низкий</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Срок исполнения *</label>
+                        <input type="date" class="form-input" name="deadline" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Статус *</label>
+                        <select class="form-select" name="status" required>
+                            <option value="todo">К выполнению</option>
+                            <option value="in_progress">В работе</option>
+                            <option value="done">Завершено</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-cancel" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Создать задачу</button>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -710,622 +677,188 @@
                 if (!startTimestamp) startTimestamp = timestamp;
                 const progress = Math.min((timestamp - startTimestamp) / duration, 1);
                 const value = Math.floor(progress * (end - start) + start);
-                element.textContent = value.toLocaleString('ru-RU') + (element.textContent.includes('₽') ? ' ₽' : '');
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                }
+                element.textContent = value.toLocaleString('ru-RU') + (element.dataset.currency === 'rub' ? ' ₽' : '');
+                if (progress < 1) window.requestAnimationFrame(step);
             };
             window.requestAnimationFrame(step);
         }
 
-        // Запуск анимации счетчиков
         document.querySelectorAll('.stat-value').forEach(element => {
             const target = parseInt(element.getAttribute('data-target'));
+            if (element.textContent.includes('₽')) element.dataset.currency = 'rub';
             animateValue(element, 0, target, 2000);
         });
 
-        // График продаж
+        // Навигация по разделам
+        function navigateTo(section) {
+            document.querySelectorAll('.nav-link').forEach(l => {
+                l.classList.remove('active');
+                if(l.dataset.section === section) l.classList.add('active');
+            });
+            showSection(section);
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                navigateTo(this.dataset.section);
+            });
+        });
+
+        function showSection(section) {
+            document.querySelectorAll('.section-content').forEach(el => el.style.display = 'none');
+            const target = document.getElementById(section + '-section');
+            if (target) {
+                target.style.display = 'block';
+                target.style.animation = 'fadeInUp 0.5s ease-out';
+            }
+            
+            const titles = {
+                'дашборд': ['Добро пожаловать!', 'Обзор вашего бизнеса на сегодня'],
+                'заказчики': ['Управление заказчиками', 'Просмотр и управление базой заказчиков'],
+                'проекты': ['Управление проектами', 'Мониторинг и контроль проектов'],
+                'задачи': ['Менеджер задач', 'Создание и отслеживание задач'],
+                'аналитика': ['Аналитика и отчеты', 'Детальная аналитика по проектам'],
+                'настройки': ['Настройки системы', 'Конфигурация параметров NASTpro1']
+            };
+            
+            if (titles[section]) {
+                document.querySelector('.page-title h2').textContent = titles[section][0];
+                document.querySelector('.page-title p').textContent = titles[section][1];
+            }
+        }
+
+        // Графики
         const salesCtx = document.getElementById('salesChart').getContext('2d');
-        const salesChart = new Chart(salesCtx, {
+        new Chart(salesCtx, {
             type: 'line',
             data: {
                 labels: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт'],
                 datasets: [{
                     label: 'Продажи 2026',
                     data: [320000, 410000, 380000, 520000, 480000, 610000, 580000, 690000, 720000, 584300],
-                    borderColor: '#6366f1',
-                    backgroundColor: 'rgba(99, 102, 241, 0.1)',
-                    borderWidth: 3,
-                    fill: true,
-                    tension: 0.4,
-                    pointBackgroundColor: '#6366f1',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    pointRadius: 5,
-                    pointHoverRadius: 7
+                    borderColor: '#ec4899',
+                    backgroundColor: 'rgba(236, 72, 153, 0.1)',
+                    borderWidth: 3, fill: true, tension: 0.4,
+                    pointBackgroundColor: '#ec4899', pointBorderColor: '#fff', pointRadius: 5
                 }]
             },
             options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                },
+                responsive: true, maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
                 scales: {
-                    y: {
-                        beginAtZero: true,
-                        grid: {
-                            color: 'rgba(0, 0, 0, 0.05)'
-                        },
-                        ticks: {
-                            callback: function(value) {
-                                return value.toLocaleString('ru-RU') + ' ₽';
-                            }
-                        }
-                    },
-                    x: {
-                        grid: {
-                            display: false
-                        }
-                    }
+                    y: { beginAtZero: true, ticks: { callback: v => v.toLocaleString('ru-RU') + ' ₽' } },
+                    x: { grid: { display: false } }
                 }
             }
         });
 
-        // График статусов проектов
-        const dealsCtx = document.getElementById('dealsChart').getContext('2d');
-        const dealsChart = new Chart(dealsCtx, {
+        new Chart(document.getElementById('dealsChart').getContext('2d'), {
             type: 'doughnut',
             data: {
                 labels: ['Завершены', 'В работе', 'Ожидают', 'Отменены'],
-                datasets: [{
-                    data: [45, 28, 18, 9],
-                    backgroundColor: [
-                        '#10b981',
-                        '#6366f1',
-                        '#f59e0b',
-                        '#ef4444'
-                    ],
-                    borderWidth: 0
-                }]
+                datasets: [{ data: [45, 28, 18, 9], backgroundColor: ['#10b981', '#ec4899', '#f59e0b', '#ef4444'], borderWidth: 0 }]
             },
-            options: {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        position: 'bottom',
-                        labels: {
-                            padding: 20,
-                            font: {
-                                size: 12
-                            }
-                        }
-                    }
-                }
-            }
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'bottom' } } }
         });
 
-        // Показать уведомление
-        setTimeout(() => {
-            const notification = document.getElementById('notification');
-            notification.style.display = 'flex';
-            setTimeout(() => {
-                notification.style.display = 'none';
-            }, 3000);
-        }, 1000);
-
-        // Интерактивность навигации
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-    </script>
-</body>
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRM System - Современная система управления клиентами</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        .crm-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 24px 32px;
-            margin-bottom: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            animation: slideDown 0.6s ease-out;
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 700;
-            color: #667eea;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .nav {
-            display: flex;
-            gap: 24px;
-        }
-
-        .nav-item {
-            padding: 12px 20px;
-            border-radius: 12px;
-            background: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .nav-item:hover {
-            background: #667eea;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .dashboard {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 24px;
-            margin-bottom: 24px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .card-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #333;
-        }
-
-        .stat-value {
-            font-size: 36px;
-            font-weight: 700;
-            color: #667eea;
-            margin-bottom: 8px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-        }
-
-        .chart-container {
-            height: 200px;
-            margin-top: 20px;
-        }
-
-        .chart {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            border-radius: 12px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .chart-bars {
-            display: flex;
-            align-items: end;
-            height: 100%;
-            padding: 20px;
-            gap: 12px;
-        }
-
-        .chart-bar {
-            flex: 1;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 6px 6px 0 0;
-            transition: all 0.3s ease;
-            animation: growBar 1s ease-out;
-        }
-
-        .chart-bar:hover {
-            background: rgba(255, 255, 255, 0.5);
-            transform: scaleY(1.05);
-        }
-
-        .recent-activities {
-            grid-column: 1 / -1;
-        }
-
-        .activity-list {
-            list-style: none;
-        }
-
-        .activity-item {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            padding: 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .activity-item:hover {
-            background: rgba(102, 126, 234, 0.05);
-            transform: translateX(5px);
-        }
-
-        .activity-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .activity-content {
-            flex: 1;
-        }
-
-        .activity-title {
-            font-weight: 500;
-            margin-bottom: 4px;
-        }
-
-        .activity-time {
-            font-size: 12px;
-            color: #666;
-        }
-
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-top: 24px;
-        }
-
-        .action-btn {
-            padding: 16px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            border-radius: 12px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-
-        .action-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes growBar {
-            from {
-                transform: scaleY(0);
-            }
-            to {
-                transform: scaleY(1);
-            }
-        }
-
-        .pulse {
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
-            100% {
-                transform: scale(1);
-            }
-        }
-
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
+        // Уведомления
+        function showNotification(message, type = 'info') {
+            const notif = document.getElementById('notification');
+            const icon = notif.querySelector('.notification-icon');
+            const title = document.getElementById('notif-title');
+            const msg = document.getElementById('notif-message');
             
-            .header-content {
-                flex-direction: column;
-                gap: 16px;
-            }
-            
-            .nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="crm-container">
-        <header class="header">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-icon">CRM</div>
-                    <span>Система Управления</span>
-                </div>
-                <nav class="nav">
-                    <a class="nav-item">Дашборд</a>
-                    <a class="nav-item">Заказчики</a>
-                    <a class="nav-item">Задачи</a>
-                    <a class="nav-item">Аналитика</a>
-                    <a class="nav-item">Настройки</a>
-                </nav>
-            </div>
-        </header>
-
-        <main class="dashboard">
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Всего заказчиков</h3>
-                </div>
-                <div class="stat-value pulse">1,247</div>
-                <div class="stat-label">+12 за сегодня</div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Активные проекты</h3>
-                </div>
-                <div class="stat-value">89</div>
-                <div class="stat-label">Общая сумма: $2.4M</div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Задачи</h3>
-                </div>
-                <div class="stat-value">42</div>
-                <div class="stat-label">8 с высоким приоритетом</div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Конверсия</h3>
-                </div>
-                <div class="stat-value">68%</div>
-                <div class="stat-label">+5% за месяц</div>
-                <div class="chart-container">
-                    <div class="chart">
-                        <div class="chart-bars">
-                            <div class="chart-bar" style="height: 60%"></div>
-                            <div class="chart-bar" style="height: 75%"></div>
-                            <div class="chart-bar" style="height: 45%"></div>
-                            <div class="chart-bar" style="height: 90%"></div>
-                            <div class="chart-bar" style="height: 68%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card recent-activities">
-                <div class="card-header">
-                    <h3 class="card-title">Последние активности</h3>
-                </div>
-                <ul class="activity-list">
-                    <li class="activity-item">
-                        <div class="activity-icon">N</div>
-                        <div class="activity-content">
-                            <div class="activity-title">Новый заказчик: ООО "ТехноПром"</div>
-                            <div class="activity-time">2 минуты назад</div>
-                        </div>
-                    </li>
-                    <li class="activity-item">
-                        <div class="activity-icon">S</div>
-                        <div class="activity-content">
-                            <div class="activity-title">Закрыт проект на $45,000</div>
-                            <div class="activity-time">15 минут назад</div>
-                        </div>
-                    </li>
-                    <li class="activity-item">
-                        <div class="activity-icon">T</div>
-                        <div class="activity-content">
-                            <div class="activity-title">Создана новая задача: Подготовить коммерческое предложение</div>
-                            <div class="activity-time">30 минут назад</div>
-                        </div>
-                    </li>
-                    <li class="activity-item">
-                        <div class="activity-icon">M</div>
-                        <div class="activity-content">
-                            <div class="activity-title">Отправлено напоминание клиенту</div>
-                            <div class="activity-time">1 час назад</div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Быстрые действия</h3>
-                </div>
-                <div class="quick-actions">
-                    <button class="action-btn">
-                        <span class="loading"></span>
-                        Добавить клиента
-                    </button>
-                    <button class="action-btn">
-                        <span class="loading"></span>
-                        Создать задачу
-                    </button>
-                    <button class="action-btn">
-                        <span class="loading"></span>
-                        Новый проект
-                    </button>
-                    <button class="action-btn">
-                        <span class="loading"></span>
-                        Отчет
-                    </button>
-                </div>
-            </div>
-        </main>
-    </div>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.card');
-            const navItems = document.querySelectorAll('.nav-item');
-            const actionButtons = document.querySelectorAll('.action-btn');
-
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.1}s`;
-            });
-
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navItems.forEach(nav => nav.style.background = 'rgba(102, 126, 234, 0.1)');
-                    navItems.forEach(nav => nav.style.color = '#667eea');
-                    this.style.background = '#667eea';
-                    this.style.color = 'white';
-                });
-            });
-
-            actionButtons.forEach(btn => {
-                btn.addEventListener('click', function() {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                });
-            });
-
-            const chartBars = document.querySelectorAll('.chart-bar');
-            chartBars.forEach((bar, index) => {
-                bar.style.animationDelay = `${index * 0.2}s`;
-            });
-
-            setInterval(() => {
-                const statValues = document.querySelectorAll('.stat-value');
-                statValues[0].textContent = (Math.floor(Math.random() * 100) + 1200).toLocaleString();
-                statValues[1].textContent = Math.floor(Math.random() * 20) + 80;
-                statValues[2].textContent = Math.floor(Math.random() * 10) + 35;
-                statValues[3].textContent = Math.floor(Math.random() * 10) + 60 + '%';
-            }, 5000);
-
-            const animateChart = () => {
-                chartBars.forEach(bar => {
-                    const newHeight = Math.floor(Math.random() * 40) + 50;
-                    bar.style.height = `${newHeight}%`;
-                });
+            const styles = {
+                success: { bg: 'linear-gradient(135deg, #10b981, #059669)', icon: 'fa-check', text: 'Успешно!' },
+                warning: { bg: 'linear-gradient(135deg, #f59e0b, #d97706)', icon: 'fa-exclamation-triangle', text: 'Внимание!' },
+                info: { bg: 'linear-gradient(135deg, #ec4899, #f472b6)', icon: 'fa-info-circle', text: 'Информация' }
             };
+            
+            const style = styles[type] || styles.info;
+            icon.style.background = style.bg;
+            icon.innerHTML = `<i class="fas ${style.icon}"></i>`;
+            title.textContent = style.text;
+            msg.textContent = message;
+            
+            notif.style.display = 'flex';
+            setTimeout(() => { notif.style.display = 'none'; }, 3000);
+        }
 
-            setInterval(animateChart, 3000);
+        // Модальное окно и задачи
+        function openTaskModal() {
+            document.getElementById('taskModal').classList.add('active');
+            document.querySelector('input[name="deadline"]').min = new Date().toISOString().split('T')[0];
+        }
+
+        function closeModal() {
+            document.getElementById('taskModal').classList.remove('active');
+            document.getElementById('taskForm').reset();
+        }
+
+        document.getElementById('taskForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const task = {
+                id: Date.now(),
+                title: formData.get('title'),
+                assignee: formData.get('assignee'),
+                priority: formData.get('priority'),
+                deadline: formData.get('deadline'),
+                status: formData.get('status')
+            };
+            
+            let tasks = JSON.parse(localStorage.getItem('nast_tasks') || '[]');
+            tasks.push(task);
+            localStorage.setItem('nast_tasks', JSON.stringify(tasks));
+            
+            showNotification('Задача успешно создана!', 'success');
+            closeModal();
+            loadTasks();
+        });
+
+        function loadTasks() {
+            const tasks = JSON.parse(localStorage.getItem('nast_tasks') || '[]');
+            const container = document.getElementById('tasks-container');
+            
+            if (tasks.length === 0) {
+                container.innerHTML = `<div style="text-align: center; padding: 3rem; color: var(--gray);">
+                    <i class="fas fa-tasks" style="font-size: 3rem; margin-bottom: 1rem; color: var(--primary);"></i>
+                    <h3>Нет активных задач</h3><p>Создайте первую задачу для вашей команды!</p></div>`;
+                return;
+            }
+
+            const priorityText = { high: 'Высокий', medium: 'Средний', low: 'Низкий' };
+            const priorityClass = { high: 'status-inactive', medium: 'status-pending', low: 'status-active' };
+            const statusText = { todo: 'К выполнению', in_progress: 'В работе', done: 'Завершено' };
+            const statusClass = { todo: 'status-pending', in_progress: 'status-active', done: 'status-active' };
+
+            container.innerHTML = `<table><thead><tr><th>Задача</th><th>Исполнитель</th><th>Приоритет</th><th>Срок</th><th>Статус</th><th>Действия</th></tr></thead><tbody>
+                ${tasks.map(t => `<tr>
+                    <td><strong>${t.title}</strong></td>
+                    <td>${t.assignee}</td>
+                    <td><span class="status-badge ${priorityClass[t.priority]}">${priorityText[t.priority]}</span></td>
+                    <td>${new Date(t.deadline).toLocaleDateString('ru-RU')}</td>
+                    <td><span class="status-badge ${statusClass[t.status]}">${statusText[t.status]}</span></td>
+                    <td><button class="btn" style="padding: 0.25rem 0.5rem; background: var(--danger); color: white;" onclick="deleteTask(${t.id})"><i class="fas fa-trash"></i></button></td>
+                </tr>`).join('')}
+            </tbody></table>`;
+        }
+
+        function deleteTask(id) {
+            if (confirm('Удалить эту задачу?')) {
+                let tasks = JSON.parse(localStorage.getItem('nast_tasks') || '[]');
+                tasks = tasks.filter(t => t.id !== id);
+                localStorage.setItem('nast_tasks', JSON.stringify(tasks));
+                loadTasks();
+                showNotification('Задача удалена', 'success');
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            loadTasks();
+            setTimeout(() => showNotification('Система NASTpro1 успешно загружена', 'success'), 500);
         });
     </script>
 </body>
